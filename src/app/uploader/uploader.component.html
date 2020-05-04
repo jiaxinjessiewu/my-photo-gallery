@@ -1,55 +1,45 @@
 <div class="row">
     <div class="col-xs-3"></div>
     <div class="col-xs-6">
-        <form [formGroup]="uploadForm">
+        <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" formControlName="name" class="form-control">
+                        <input placeholder="Name" type="text" id="name" formControlName="name" class="form-control"
+                        [ngStyle]="{'border' : !uploadForm.get('name').valid && uploadForm.get('name').touched ? '1px solid red' : '1px solid #ccc'}"
+                        >
+                        <div class="form-error" 
+                            *ngIf="!uploadForm.get('name').valid && uploadForm.get('name').touched">
+                            Photo's name is required
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="url">Image URL</label>
-                        <input type="text" id="url" formControlName="url" class="form-control">
+                        <input placeholder="Image URL" type="text" id="url" formControlName="url" class="form-control"
+                        [ngStyle]="{'border' : !uploadForm.get('url').valid && uploadForm.get('url').touched ? '1px solid red' : '1px solid #ccc'}"
+                        >
+                        <div class="form-error" 
+                            *ngIf="!uploadForm.get('url').valid && uploadForm.get('url').touched">
+                            Valid photo's URL is required
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
+                        <textarea placeholder="Description" class="form-control" id="description" formControlName="description" rows="3"></textarea>
                     </div>
                 </div>
-                <div class="col-xs-12">
+                <div class="col-xs-12 button">
+
                     <button class="btn btn-success" type="submit" [disabled]="!uploadForm.valid">
                         Upload
                     </button>
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="url">Image URL</label>
-                        <input type="text" id="url" formControlName="url" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button class="btn btn-success" type="submit" [disabled]="!uploadForm.valid">
-                        Upload
-                    </button>
-                </div>
-            </div> -->
         </form>
     </div>
     <div class="col-xs-3"></div>
