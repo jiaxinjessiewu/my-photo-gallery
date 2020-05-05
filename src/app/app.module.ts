@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { GalleryService } from './service/gallery.service';
 import { SearchComponent } from './search/search.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 /* 
 jessie-gallery-flickr
@@ -18,6 +19,14 @@ d6b7d34c02597060ea986e43a19ddcbe
 
 Secret:
 0496e2e8ebcf147e
+
+my-photo-gallery
+Key:
+287f2c081cee1f57e86b01c164ef9153
+
+Secret:
+c888c9773c2124de
+
 */
 
 @NgModule({
@@ -33,7 +42,8 @@ Secret:
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule
   ],
   providers: [GalleryService],
   bootstrap: [AppComponent]
