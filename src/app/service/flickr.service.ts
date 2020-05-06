@@ -5,14 +5,15 @@ import { map } from 'rxjs/operators';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export interface FlickrPhoto {
-    farm: string;
     id: string;
+    owner: string;
     secret: string;
     server: string;
+    farm: string;
     title: string;
 }
 
-export interface FlickrOutput {
+export interface FlickrSearchOutput {
     photos: {
       photo: FlickrPhoto[];
     };
@@ -34,16 +35,16 @@ export class FlickrService {
         }
         const url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&';
         const params = `api_key=${environment.flickr.key}&text=${keyword}&format=json&nojsoncallback=1&per_page=18&page=${this.currPage}`;
-        return this.http.get(url + params).pipe(map((res : FlickrOutput) => {
-            const photosArray = [];
-            res.photos.photo.forEach((p : FlickrPhoto) => {
-                const photoObj = {
+        return this.http.get(url + params)
+        .pipe(map((result : FlickrSearchOutput) => {
+            let photos = result.photos.photo.map(p => {
+                let photoObj = {
                     url : `https://farm${p.farm}.staticflickr.com/${p.server}/${p.id}_${p.secret}.jpg`,
                     title : p.title
                 }
-                photosArray.push(photoObj);
-            });
-            return photosArray;
+                return photoObj;
+            })
+            return photos;
         }))
     }
 }
