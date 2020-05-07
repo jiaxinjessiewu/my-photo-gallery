@@ -6,10 +6,11 @@
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let image of images;let i = index">
             <div class="card">
-                <a href="{{image.url}}">
+                <a  (click)="showPhotoModal = !showPhotoModal">
                     <img src="{{image.url}}" alt="{{image.title}}" title="{{image.title}}">
                 </a>
             </div>
+            <app-photo-modal [photo]="image" *ngIf="showPhotoModal" (getData)="getData($event)"></app-photo-modal>
         </div>
     </div>
     <div

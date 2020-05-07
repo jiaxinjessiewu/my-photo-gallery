@@ -1,0 +1,26 @@
+<div class="modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close"  (click)="onClose()">&times;</button>
+          <h4 class="modal-title">Photo Details</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <p>Photo url: {{photo.url}}</p>
+          </div>
+          <div class="img-modal" >
+              <a href="{{photo.url}}">
+                <img class="img-responsive" src="{{photo.url}}" alt="{{photo.title}}" title="{{photo.title}}">
+              </a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>

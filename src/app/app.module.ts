@@ -11,6 +11,8 @@ import { UploaderComponent } from './uploader/uploader.component';
 import { GalleryService } from './service/gallery.service';
 import { SearchComponent } from './search/search.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { PhotoModalComponent } from './search/photo-modal/photo-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* 
 jessie-gallery-flickr
@@ -35,7 +37,8 @@ c888c9773c2124de
     GalleryComponent,
     HeaderComponent,
     UploaderComponent,
-    SearchComponent
+    SearchComponent,
+    PhotoModalComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ c888c9773c2124de
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    NgbModule
   ],
   providers: [GalleryService],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FlickrService } from '../service/flickr.service';
-
+import { Photo } from '../gallery/photo.model';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PhotoModalComponent } from './photo-modal/photo-modal.component';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,7 +11,8 @@ import { FlickrService } from '../service/flickr.service';
 export class SearchComponent implements OnInit {
   images = []; 
   keyword : string = '';
-  constructor(private flickeService : FlickrService) { }
+  showPhotoModal : Boolean = false;
+  constructor(private flickeService : FlickrService,) { }
 
   ngOnInit(): void {
   }
@@ -33,5 +36,8 @@ export class SearchComponent implements OnInit {
       })
     }
   }
+  public getData(value): void {
+    console.log("getData:",value) // welcome to stackoverflow!
+}
 
 }
