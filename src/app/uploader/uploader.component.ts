@@ -16,7 +16,6 @@ export class UploaderComponent implements OnInit {
     this.initForm();
   }
   onSubmit() {
-    console.log("onsubmit: ",this.uploadForm.value)
     this.galleryService.addPhoto(this.uploadForm.value);
   }
   private initForm() {
@@ -27,8 +26,9 @@ export class UploaderComponent implements OnInit {
       'name' : new FormControl(name, Validators.required),
       'url' : new FormControl(
         url,
-        [Validators.required, 
-        Validators.pattern(this.urlRegex)]
+        Validators.required
+        // [Validators.required, 
+        // Validators.pattern(this.urlRegex)]
         ),
       'description' : new FormControl(description)
     })

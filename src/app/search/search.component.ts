@@ -39,7 +39,6 @@ export class SearchComponent implements OnInit {
     for (var i = 0; i < images.length; i++) {
           if (image.url === images[i].url) {
             imageModalPointer = i;
-            console.log('jhhl',i);
             break;
           }
       }
