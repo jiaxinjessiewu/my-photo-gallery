@@ -1,6 +1,7 @@
-<div class="modal" role="dialog">
+<div class="modal" *ngIf="opened"
+  [ngClass]="{'modal-open' : opened, 'fade': !opened}"
+>
     <div class="modal-dialog">
-
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -8,9 +9,6 @@
           <h4 class="modal-title">Photo Details</h4>
         </div>
         <div class="modal-body">
-          <div>
-            <p>Photo url: {{photo.url}}</p>
-          </div>
           <div class="img-modal" >
               <a href="{{photo.url}}">
                 <img class="img-responsive" src="{{photo.url}}" alt="{{photo.title}}" title="{{photo.title}}">
@@ -18,9 +16,9 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <p class="text-left">Photo URL: </p>
+          <p title="{{photo.url}}" class="modal-details-url text-left">{{photo.url}}</p>
         </div>
       </div>
-
     </div>
   </div>

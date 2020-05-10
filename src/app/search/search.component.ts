@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FlickrService } from '../service/flickr.service';
-import { Photo } from '../gallery/photo.model';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PhotoModalComponent } from './photo-modal/photo-modal.component';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -11,8 +8,9 @@ import { PhotoModalComponent } from './photo-modal/photo-modal.component';
 export class SearchComponent implements OnInit {
   images = []; 
   keyword : string = '';
-  showPhotoModal : Boolean = false;
-  constructor(private flickeService : FlickrService,) { }
+  openModal : Boolean = false;
+  photoPointer : number;
+  constructor(private flickeService : FlickrService) { }
 
   ngOnInit(): void {
   }
@@ -36,8 +34,21 @@ export class SearchComponent implements OnInit {
       })
     }
   }
-  public getData(value): void {
-    console.log("getData:",value) // welcome to stackoverflow!
-}
+  onOpenModal(image, images) {
+    var imageModalPointer;
+    for (var i = 0; i < images.length; i++) {
+          if (image.url === images[i].url) {
+            imageModalPointer = i;
+            console.log('jhhl',i);
+            break;
+          }
+      }
+    this.openModal = true;
+    this.images = images;
+    this.photoPointer  = imageModalPointer;
+  }
+  closePhotModal() {
+    this.openModal = false;
+  }
 
 }

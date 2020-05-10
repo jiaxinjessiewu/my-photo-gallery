@@ -4,13 +4,12 @@
         <input type="search" class="form-control" (keyup)="searchPhotos($event)">
     </div>
     <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let image of images;let i = index">
+        <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let image of images; let i = index">
             <div class="card">
-                <a  (click)="showPhotoModal = !showPhotoModal">
+                <a  (click)="onOpenModal(image,images)">
                     <img src="{{image.url}}" alt="{{image.title}}" title="{{image.title}}">
                 </a>
             </div>
-            <app-photo-modal [photo]="image" *ngIf="showPhotoModal" (getData)="getData($event)"></app-photo-modal>
         </div>
     </div>
     <div
@@ -20,5 +19,13 @@
       [infiniteScrollThrottle]="50"
       (scrolled)="onScroll()"
     ></div>
+</div>
+<div *ngIf="openModal">
+    <app-photo-modal 
+        [photos]="images" 
+        [photoPointer]="photoPointer"
+        (closePhotModal)="closePhotModal()"
+    >
+    </app-photo-modal>
 </div>
 

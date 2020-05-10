@@ -1,4 +1,43 @@
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    &.modal-open {
+        display: block;
+        animation: fadeIn ease 20s;
+        -webkit-animation: fadeIn ease 20s;
+        -moz-animation: fadeIn ease 20s;
+        -o-animation: fadeIn ease 20s;
+        -ms-animation: fadeIn ease 20s;
+    }
+    @keyframes modal-open {
+            0% {
+                opacity:0
+            }
+            100% {
+                opacity:1;
+            }
+        }
 
-  
-   
-  
+    @-moz-keyframes modal-open {
+        0% {opacity:0;}
+        100% {opacity:1;}
+        }
+        
+        @-webkit-keyframes modal-open {
+        0% {opacity:0;}
+        100% {opacity:1;}
+        }
+        
+        @-o-keyframes modal-open {
+        0% {opacity:0;}
+        100% {opacity:1;}
+        }
+        
+        @-ms-keyframes modal-open {
+        0% {opacity:0;}
+        100% {opacity:1;}
+        }
+    .modal-details-url {
+        word-wrap: break-word;
+    }
+}

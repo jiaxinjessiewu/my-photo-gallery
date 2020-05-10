@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-photo-modal',
@@ -6,19 +6,43 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./photo-modal.component.scss']
 })
 export class PhotoModalComponent implements OnInit {
-  @Input() photo : {
+
+  public opened:boolean = false;
+  public currentPointer:number;
+  public photo : {
+    title: string,
+    url: string
+  }
+  @Input() photos : {
     title : string,
     url   : string
-  };
-  @Output() public getData = new EventEmitter<string>();
-  constructor() { }
+  }[];
+  @Input() photoPointer : number;
+  @Output() public closePhotModal = new EventEmitter<string>();
+  
+  constructor(public element: ElementRef) { }
 
   ngOnInit(): void {
+    if(this.photoPointer >= 0) {
+      this.openGallery(this.photoPointer);
+    } 
   }
-
+  openGallery (pointer: number) {
+    if (!pointer) {
+      this.currentPointer = 0;
+    } else {
+      this.currentPointer = pointer;
+    }
+    for (let i = 0; i < this.photos.length ; i ++ ){
+      if (i == this.currentPointer) {
+        this.photo = this.photos[i];
+        this.opened = true;
+        break;
+      }
+    }
+  }
   onClose() {
-    console.log("onClose")
-    this.getData.emit('Close');
+    this.closePhotModal.emit('Close');
   }
 
 }
