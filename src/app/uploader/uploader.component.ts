@@ -9,7 +9,7 @@ import { GalleryService } from '../service/gallery.service';
 })
 export class UploaderComponent implements OnInit {
   uploadForm : FormGroup;
-  urlRegex : string = '(https || http ? ://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+  urlRegex : string = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   constructor(private galleryService : GalleryService) { }
 
   ngOnInit(): void {
@@ -26,9 +26,8 @@ export class UploaderComponent implements OnInit {
       'name' : new FormControl(name, Validators.required),
       'url' : new FormControl(
         url,
-        Validators.required
-        // [Validators.required, 
-        // Validators.pattern(this.urlRegex)]
+        [Validators.required, 
+        Validators.pattern(this.urlRegex)]
         ),
       'description' : new FormControl(description)
     })

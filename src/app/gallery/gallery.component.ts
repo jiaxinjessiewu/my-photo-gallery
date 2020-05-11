@@ -19,7 +19,14 @@ export class GalleryComponent implements OnInit {
     .subscribe((photos : Photo[]) => {
       this.photos = photos;
     })
-    this.photos = this.galleryService.getPhotos();
+    // this.galleryService.getPhotos()
+    // this.photos = this.galleryService.getPhotos();
+    this.galleryService.getPhotos()
+    .toPromise()
+      .then(res => {
+        this.photos = res;
+      });
+    
   }
 
 }
