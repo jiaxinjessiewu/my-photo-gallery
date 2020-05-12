@@ -1,0 +1,14 @@
+.navbar-default {
+    background-color: transparent;
+    border: none;
+    .navbar-brand {
+        font-size: 24px;
+    }
+    .navbar-brand, .navbar-nav>li>a {
+        color: #ffffff;
+    }
+    a:hover {
+        background-color: #66b9bfa6;
+        border-radius: 10px;
+    }
+}
