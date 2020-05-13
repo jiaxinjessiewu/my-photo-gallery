@@ -5,13 +5,13 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input placeholder="Name" type="text" id="name" formControlName="name" class="form-control"
-                        [ngStyle]="{'border' : !uploadForm.get('name').valid && uploadForm.get('name').touched ? '1px solid red' : '1px solid #ccc'}"
+                        <label for="title">Title</label>
+                        <input placeholder="Title" type="text" id="title" formControlName="title" class="form-control"
+                        [ngStyle]="{'border' : !uploadForm.get('title').valid && uploadForm.get('title').touched ? '1px solid red' : '1px solid #ccc'}"
                         >
                         <div class="form-error" 
-                            *ngIf="!uploadForm.get('name').valid && uploadForm.get('name').touched">
-                            Photo's name is required
+                            *ngIf="!uploadForm.get('title').valid && uploadForm.get('title').touched">
+                            Photo's title is required
                         </div>
                     </div>
                 </div>

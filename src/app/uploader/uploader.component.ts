@@ -16,14 +16,17 @@ export class UploaderComponent implements OnInit {
     this.initForm();
   }
   onSubmit() {
-    this.galleryService.addPhoto(this.uploadForm.value);
+    this.galleryService.addPhoto(this.uploadForm.value)
+    .subscribe(res => {
+      this.uploadForm.reset();
+    })
   }
   private initForm() {
-    let name : string = '';
+    let title : string = '';
     let url : string = '';
     let description : string = '';
     this.uploadForm = new FormGroup({
-      'name' : new FormControl(name, Validators.required),
+      'title' : new FormControl(title, Validators.required),
       'url' : new FormControl(
         url,
         [Validators.required, 

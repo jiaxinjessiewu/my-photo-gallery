@@ -10,8 +10,12 @@ import { GalleryService } from '../service/gallery.service';
 })
 export class GalleryComponent implements OnInit {
 
-  photos : Photo[];
+  // photos : Photo[];
+  photos : any = {};
+  modalPhotos : Photo[] = [];
   subscription : Subscription;
+  openModal : Boolean = false;
+  photoPointer : number;
   constructor(private galleryService : GalleryService) { }
 
   ngOnInit(): void {
@@ -19,8 +23,6 @@ export class GalleryComponent implements OnInit {
     .subscribe((photos : Photo[]) => {
       this.photos = photos;
     })
-    // this.galleryService.getPhotos()
-    // this.photos = this.galleryService.getPhotos();
     this.galleryService.getPhotos()
     .toPromise()
       .then(res => {
@@ -28,5 +30,24 @@ export class GalleryComponent implements OnInit {
       });
     
   }
-
+  onOpenModal(image, images) {
+    for (let i in images) {
+      this.modalPhotos.push(images[i])
+    }
+    var imageModalPointer;
+    for (var i = 0; i < this.modalPhotos.length; i++) {
+          if (image.url === this.modalPhotos[i].url) {
+            imageModalPointer = i;
+            break;
+          }
+      }
+    this.openModal = true;
+    this.photoPointer = imageModalPointer;
+  }
+  closePhotoModal() {
+    this.openModal = false;
+  }
+  onDeletePhoto(key : string) {
+    this.galleryService.deletePhoto(key);
+  }
 }

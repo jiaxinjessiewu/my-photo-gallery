@@ -1,7 +1,18 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-3 col-xs-12 gallery-img" *ngFor="let photo of photos">
-            <img src="{{ photo.url }}" alt="{{ photo.name }}">
+        <div class="col-sm-3 col-xs-12 gallery-img" *ngFor="let item of photos | keyvalue">
+            <a class="remove-image"(click)="onDeletePhoto(item.key)">&#215;</a>
+            <a (click)="onOpenModal(item.value, photos)">
+                <img src="{{ item.value.url }}" alt="{{ item.value.title }}" title="{{ item.value.title }}">
+            </a>
         </div>
     </div>
+</div>
+<div *ngIf="openModal">
+    <app-photo-modal 
+        [photos]="modalPhotos" 
+        [photoPointer]="photoPointer"
+        (closePhotoModal)="closePhotoModal()"
+    >
+    </app-photo-modal>
 </div>

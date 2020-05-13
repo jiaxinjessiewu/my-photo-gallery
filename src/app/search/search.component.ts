@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
     this.images = images;
     this.photoPointer  = imageModalPointer;
   }
-  closePhotModal() {
+  closePhotoModal() {
     this.openModal = false;
   }
 

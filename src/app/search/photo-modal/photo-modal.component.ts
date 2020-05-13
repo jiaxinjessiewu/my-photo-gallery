@@ -18,7 +18,7 @@ export class PhotoModalComponent implements OnInit {
     url   : string
   }[];
   @Input() photoPointer : number;
-  @Output() public closePhotModal = new EventEmitter<string>();
+  @Output() public closePhotoModal = new EventEmitter<string>();
   
   constructor(public element: ElementRef) { }
 
@@ -42,7 +42,7 @@ export class PhotoModalComponent implements OnInit {
     }
   }
   onClose() {
-    this.closePhotModal.emit('Close');
+    this.closePhotoModal.emit('Close');
   }
 
 }
