@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
+## About the application
+
+My-photo-gallery is a photo search application build with Angular framework and Flickr API, which also uses [ngx-infinite-scroll](https://www.npmjs.com/package/ngx-infinite-scroll) to load more photos when the user is scrolling down. The app also allows users upload and store images in Firebase and use Firebase Realtime Database to see the files that are uploaded in real time.
+
+Live demo: `https://my-photo-gallery-e66ad.web.app`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
